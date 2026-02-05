@@ -1,0 +1,66 @@
+{
+  "name": "skillcn",
+  "version": "0.0.1",
+  "description": "A community driven library of reusable, modular agent",
+  "homepage": "https://github.com/mhdcodes/skillcn.git",
+  "keywords": [
+    "skillcn"
+  ],
+  "author": "MHD <hello@mhd.codes>",
+  "contributors": [
+    {
+      "name": "MHD",
+      "url": "https://x.com/mhdcode"
+    }
+  ],
+  "type": "module",
+  "bin": {
+    "skillcn": "./dist/index.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "engines": {
+    "node": "^20.0.0 || >=22.0.0"
+  },
+  "scripts": {
+    "prebuild": "pnpm check-lint && pnpm check-types",
+    "build": "tsdown",
+    "prepack": "tsdown",
+    "lint": "biome lint --write .",
+    "format": "biome format --write .",
+    "check-lint": "biome check src --write .",
+    "check-types": "tsc --noEmit",
+    "changeset": "changeset",
+    "changeset:version": "changeset version && pnpm run format",
+    "changeset:publish": "pnpm build && changeset publish"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mhdcodes/skillcn.git"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.3.14",
+    "@changesets/changelog-github": "^0.5.2",
+    "@changesets/cli": "^2.29.8",
+    "@clack/prompts": "^1.0.0",
+    "@total-typescript/tsconfig": "^1.0.4",
+    "@types/node": "^24.10.11",
+    "commander": "^14.0.3",
+    "picocolors": "^1.1.1",
+    "tsdown": "^0.20.3",
+    "typescript": "^5.9.3"
+  }
+}
