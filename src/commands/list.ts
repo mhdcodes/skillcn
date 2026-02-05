@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 export async function listSkills(): Promise<void> {
-  const skillsDir = resolve(__dirname, "../src/skills");
+  const skillsDir = resolve(__dirname, "skills");
 
   try {
     const skills = await readdir(skillsDir);

@@ -11,7 +11,7 @@ async function copySkill(
   skillName: string,
   options: { dryRun?: boolean },
 ): Promise<boolean> {
-  const sourceDir = resolve(__dirname, "../src/skills", skillName);
+  const sourceDir = resolve(__dirname, "skills", skillName);
   const targetDir = resolve(process.cwd(), ".agents/skills", skillName);
 
   try {

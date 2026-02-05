@@ -1,3 +1,5 @@
+import { cpSync } from "node:fs";
+import { join } from "node:path";
 import { defineConfig } from "tsdown";
 
 export default defineConfig({
@@ -20,11 +22,15 @@ export default defineConfig({
     "@clack/prompts",
     "sisteransi",
   ],
+  banner: {
+    js: "#!/usr/bin/env node",
+  },
   outExtensions: () => ({
     js: ".js",
     dts: ".d.ts",
   }),
-  banner: {
-    js: "#!/usr/bin/env node",
+  onSuccess: async () => {
+    cpSync(join("src", "skills"), join("dist", "skills"), { recursive: true });
+    console.log("✓ Copied skills directory to dist/");
   },
 });
