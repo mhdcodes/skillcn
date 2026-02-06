@@ -11,16 +11,9 @@ A community-driven library of reusable, modular agent **Skills** for AI agents a
 
 ## What are Skills?
 
-Skills are self-contained recipes that give AI agents specific capabilities:
+Skills are collections of instructions, scripts, and resources that an AI Agent can load dynamically to improve performance on specialized tasks. They teach the AI Agent how to complete specific tasks in a repeatable way, whether that’s creating documents using your organization’s brand guidelines, analyzing data, or automating personal or team processes.
 
-- 📧 **Email handling** - Send, parse, and manage emails
-- 📊 **Data processing** - Transform, analyze, and visualize data
-- 🌐 **Web interactions** - Scrape, fetch, and interact with websites
-- 📝 **Document generation** - Create PDFs, Word docs, presentations
-- 🔍 **Search & retrieval** - Query databases, APIs, and knowledge bases
-- And many more...
-
-Each Skill is a ready-to-use component that you can install and integrate into your agent workflows with a single command.
+Each skill is self-contained within its own folder and includes a SKILL.md file that defines the instructions and metadata used by the AI Agent. Skills can be installed and integrated into an AI Agent workflow with a single command.
 
 ## Install
 
@@ -29,7 +22,7 @@ Install a skill with your preferred package manager:
 **Using PNPM:**
 
 ```bash
-pnpm dlx skillcn add [skill]
+pnpx skillcn add [skill]
 ```
 
 **Using Bun:**
@@ -44,36 +37,30 @@ bunx --bun skillcn add [skill]
 npx skillcn add [skill]
 ```
 
-**Using Yarn:**
-
-```bash
-yarn skillcn add [skill]
-```
-
 ### Usage Examples
 
 **Install a single skill:**
 
 ```bash
-npx skillcn add frontend-design
+pnpx skillcn add frontend-design
 ```
 
 **Install multiple skills at once:**
 
 ```bash
-npx skillcn add frontend-design data-analyzer
+pnpx skillcn add frontend-design data-analyzer
 ```
 
 **List available skills:**
 
 ```bash
-npx skillcn list
+pnpx skillcn list
 ```
 
 **Preview installation (dry run):**
 
 ```bash
-npx skillcn add frontend-design --dry-run
+pnpx skillcn add frontend-design --dry-run
 ```
 
 ## How It Works
