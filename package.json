@@ -1,11 +1,8 @@
 {
   "name": "skillcn",
   "version": "0.0.3",
-  "description": "A community driven library of reusable, modular agent",
+  "description": "A community-driven library of reusable, modular skills for AI agents and automation workflows",
   "homepage": "https://github.com/mhdcodes/skillcn.git",
-  "keywords": [
-    "skillcn"
-  ],
   "author": "MHD <hello@mhd.codes>",
   "contributors": [
     {
@@ -52,6 +49,35 @@
     "type": "git",
     "url": "https://github.com/mhdcodes/skillcn.git"
   },
+  "keywords": [
+    "cli",
+    "agent-skills",
+    "skills",
+    "ai-agents",
+    "antigravity",
+    "claude-code",
+    "openclaw",
+    "cline",
+    "codebuddy",
+    "codex",
+    "command-code",
+    "continue",
+    "cursor",
+    "gemini-cli",
+    "github-copilot",
+    "junie",
+    "kilo",
+    "kimi-cli",
+    "kiro-cli",
+    "kode",
+    "mistral-vibe",
+    "opencode",
+    "qwen-code",
+    "replit",
+    "trae",
+    "windsurf",
+    "zencoder"
+  ],
   "devDependencies": {
     "@biomejs/biome": "2.3.14",
     "@changesets/changelog-github": "^0.5.2",
