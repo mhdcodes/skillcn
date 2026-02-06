@@ -1,6 +1,6 @@
 {
   "name": "skillcn",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A community-driven library of reusable, modular skills for AI agents and automation workflows",
   "homepage": "https://github.com/mhdcodes/skillcn.git",
   "author": "MHD <hello@mhd.codes>",
