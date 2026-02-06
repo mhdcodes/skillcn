@@ -44,7 +44,7 @@
     "check-lint": "biome check src --write .",
     "check-types": "tsc --noEmit",
     "changeset": "changeset",
-    "changeset:version": "changeset version && pnpm run format",
+    "changeset:version": "changeset version && pnpm format",
     "changeset:publish": "pnpm build && changeset publish"
   },
   "license": "MIT",
