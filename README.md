@@ -9,11 +9,21 @@
 
 A community-driven library of reusable, modular agent **Skills** for AI agents and automation workflows.
 
+Designed for use with modern AI coding environments including **Claude Code**, **Cursor**, **Windsurf**, **GitHub Copilot**, **Trae**, and open-source tools like **OpenCode** and **Cline**.
+
 ## What are Skills?
 
-Skills are collections of instructions, scripts, and resources that an AI Agent can load dynamically to improve performance on specialized tasks. They teach the AI Agent how to complete specific tasks in a repeatable way, whether that’s creating documents using your organization’s brand guidelines, analyzing data, or automating personal or team processes.
+Skills are collections of instructions, scripts, and resources that an AI Agent can load dynamically to improve performance on specialized tasks. They teach the AI Agent _how_ to complete specific tasks in a repeatable, high-quality way, whether that’s creating distinctive UI components, building robust APIs, or following strict brand guidelines.
 
-Each skill is self-contained within its own folder and includes a SKILL.md file that defines the instructions and metadata used by the AI Agent. Skills can be installed and integrated into an AI Agent workflow with a single command.
+Each skill is self-contained within its own folder and includes a `SKILL.md` file that defines the instructions and metadata used by the AI Agent.
+
+## Why skillcn?
+
+- **📦 Standardized:** A consistent format for agent instructions that works across different AI tools.
+- **🧩 Modular:** Don't bloat your context. Install only the specific skills your project needs.
+- **🤝 Community-Driven:** Benefit from shared prompt engineering best practices without reinventing the wheel.
+
+For more information, check out: [agentskills.io](https://agentskills.io/)
 
 ## Install
 
@@ -48,7 +58,7 @@ pnpx skillcn add frontend-design
 **Install multiple skills at once:**
 
 ```bash
-pnpx skillcn add frontend-design data-analyzer
+pnpx skillcn add frontend-design astro-builder
 ```
 
 **List available skills:**
@@ -77,7 +87,7 @@ your-project/
 │   └── skills/
 │       └── frontend-design/
 │           └── SKILL.md
-│       └── web-scraper/
+│       └── astro-builder/
 │           └── SKILL.md
 ├── src/
 └── package.json
