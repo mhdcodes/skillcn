@@ -35,11 +35,11 @@
     "prebuild": "pnpm check-lint && pnpm check-types",
     "build": "tsdown",
     "prepack": "tsdown",
-    "lint": "biome lint",
-    "lint:fix": "biome lint --write .",
+    "lint": "biome lint --write .",
     "format": "biome format --write .",
-    "check-lint": "biome check src --write .",
+    "check-lint": "biome check src",
     "check-types": "tsc --noEmit",
+    "test": "vitest run",
     "changeset": "changeset",
     "changeset:version": "changeset version && pnpm format",
     "changeset:publish": "pnpm build && changeset publish"
@@ -88,6 +88,7 @@
     "commander": "^14.0.3",
     "picocolors": "^1.1.1",
     "tsdown": "^0.20.3",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
   }
 }

@@ -4,10 +4,12 @@ import { fileURLToPath } from "node:url";
 import { confirm, isCancel } from "@clack/prompts";
 import { blue, bold, cyan, green, red, yellow } from "picocolors";
 
+import { resolveSkillSource } from "../utils/resolver";
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-async function copySkill(
+async function installLocalSkill(
   skillName: string,
   options: { dryRun?: boolean },
 ): Promise<boolean> {
@@ -85,6 +87,25 @@ async function copySkill(
   }
 }
 
+async function installSkill(
+  skillName: string,
+  options: { dryRun?: boolean },
+): Promise<boolean> {
+  const source = resolveSkillSource(skillName);
+  if (!source) {
+    console.log(`${red("✗")} Invalid skill name or URL: "${skillName}"`);
+    return false;
+  }
+
+  if (source.type === "local") {
+    return installLocalSkill(source.skill, {
+      dryRun: options.dryRun,
+    });
+  }
+
+  return false;
+}
+
 export async function addSkills(
   skills: string[],
   options: { dryRun: boolean },
@@ -94,7 +115,7 @@ export async function addSkills(
   let successCount = 0;
 
   for (const skill of skills) {
-    const success = await copySkill(skill, {
+    const success = await installSkill(skill, {
       dryRun: options.dryRun,
     });
     if (success) successCount++;
