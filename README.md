@@ -49,6 +49,8 @@ npx skillcn add [skill]
 
 ### Usage Examples
 
+#### Local Skills (Bundled)
+
 **Install a single skill:**
 
 ```bash
@@ -73,6 +75,20 @@ pnpx skillcn list
 pnpx skillcn add frontend-design --dry-run
 ```
 
+#### GitHub Skills (Remote)
+
+**Install a skill from a GitHub repository:**
+
+```bash
+pnpx skillcn add https://github.com/user/repo
+```
+
+**Preview GitHub installation (dry run):**
+
+```bash
+pnpx skillcn add https://github.com/user/repo --dry-run
+```
+
 ## How It Works
 
 When you install a skill:
@@ -95,11 +111,12 @@ your-project/
 
 ## Available Commands
 
-| Command                         | Description                     |
-| ------------------------------- | ------------------------------- |
-| `skillcn add <skill> [...]`     | Install one or more skills      |
-| `skillcn list` or `skillcn ls`  | List all available skills       |
-| `skillcn add <skill> --dry-run` | Preview what would be installed |
+| Command                         | Description                      |
+| ------------------------------- | -------------------------------- |
+| `skillcn add <skill...>`        | Install one or more local skills |
+| `skillcn add <github-url>`      | Install skill from GitHub repo   |
+| `skillcn list` or `skillcn ls`  | List all available local skills  |
+| `skillcn add <skill> --dry-run` | Preview what would be installed  |
 
 ## Contributing
 
