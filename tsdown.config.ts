@@ -11,7 +11,6 @@ export default defineConfig({
   minify: true,
   sourcemap: true,
   platform: "node",
-  target: "node18",
   // Prevent shims that cause the require issue
   shims: false,
   treeshake: true,
@@ -31,6 +30,6 @@ export default defineConfig({
   }),
   onSuccess: async () => {
     cpSync(join("src", "skills"), join("dist", "skills"), { recursive: true });
-    console.log("✓ Copied skills directory to dist/");
+    console.log("✓ Copied skills to dist/");
   },
 });
