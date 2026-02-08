@@ -31,6 +31,6 @@ export default defineConfig({
   }),
   onSuccess: async () => {
     cpSync(join("src", "skills"), join("dist", "skills"), { recursive: true });
-    console.log("✓ Copied skills directory to dist/");
+    console.log("✓ Copied skills to dist/");
   },
 });

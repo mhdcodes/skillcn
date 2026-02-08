@@ -1,9 +1,10 @@
-import { copyFile, mkdir, readdir, stat } from "node:fs/promises";
+import { copyFile, mkdir, readdir, stat, writeFile } from "node:fs/promises";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { confirm, isCancel } from "@clack/prompts";
 import { blue, bold, cyan, green, red, yellow } from "picocolors";
 
+import { fetchSkillFromGitHub, type GitHubRepo } from "../utils/github";
 import { resolveSkillSource } from "../utils/resolver";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -87,6 +88,69 @@ async function installLocalSkill(
   }
 }
 
+async function installGithubSkill(
+  skillName: string,
+  github: GitHubRepo,
+  options: { dryRun?: boolean },
+): Promise<boolean> {
+  const targetDir = resolve(process.cwd(), ".agents/skills", skillName);
+
+  try {
+    if (options.dryRun) {
+      console.log(
+        `${blue("→")} Would install ${cyan(skillName)} from ${cyan(`${github.owner}/${github.repo}`)}`,
+      );
+      return true;
+    }
+
+    const content = await fetchSkillFromGitHub(github);
+    if (!content) {
+      console.log(`${yellow("⊘")} Skipped ${cyan(skillName)}`);
+      return false;
+    }
+
+    // Check if target directory exists
+    let targetExists = false;
+    try {
+      await stat(targetDir);
+      targetExists = true;
+    } catch {
+      // Target doesn't exist, which is fine
+    }
+
+    // If target exists and force is not set, prompt user
+    if (targetExists) {
+      const shouldOverwrite = await confirm({
+        message: `Skill "${cyan(skillName)}" already exists. Overwrite?`,
+        initialValue: false,
+      });
+
+      // User cancelled or said no
+      if (isCancel(shouldOverwrite) || !shouldOverwrite) {
+        console.log(`${yellow("⊘")} Skipped ${cyan(skillName)}`);
+        return false;
+      }
+    }
+
+    // Create target directory
+    await mkdir(targetDir, { recursive: true });
+
+    // Write SKILL.md
+    await writeFile(join(targetDir, "SKILL.md"), content, "utf-8");
+
+    console.log(
+      `${green("✓")} Installed ${cyan(skillName)} from ${cyan(`${github.owner}/${github.repo}`)}`,
+    );
+
+    return true;
+  } catch (error) {
+    console.log(
+      `${red("✗")} Failed to install "${skillName}": ${error instanceof Error ? error.message : error}`,
+    );
+    return false;
+  }
+}
+
 async function installSkill(
   skillName: string,
   options: { dryRun?: boolean },
@@ -99,6 +163,12 @@ async function installSkill(
 
   if (source.type === "local") {
     return installLocalSkill(source.skill, {
+      dryRun: options.dryRun,
+    });
+  }
+
+  if (source.type === "github") {
+    return installGithubSkill(source.skill, source.repo, {
       dryRun: options.dryRun,
     });
   }

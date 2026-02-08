@@ -37,6 +37,7 @@
     "prepack": "tsdown",
     "lint": "biome lint --write .",
     "format": "biome format --write .",
+    "check": "biome check --write .",
     "check-lint": "biome check src",
     "check-types": "tsc --noEmit",
     "test": "vitest run",
