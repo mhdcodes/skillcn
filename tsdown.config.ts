@@ -11,7 +11,6 @@ export default defineConfig({
   minify: true,
   sourcemap: true,
   platform: "node",
-  target: "node18",
   // Prevent shims that cause the require issue
   shims: false,
   treeshake: true,
