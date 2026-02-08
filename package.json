@@ -29,7 +29,7 @@
     "README.md"
   ],
   "engines": {
-    "node": "^20.0.0 || >=22.0.0"
+    "node": ">=22.0.0"
   },
   "scripts": {
     "prebuild": "pnpm check-lint && pnpm check-types",
@@ -85,7 +85,7 @@
     "@changesets/cli": "^2.29.8",
     "@clack/prompts": "^1.0.0",
     "@total-typescript/tsconfig": "^1.0.4",
-    "@types/node": "^24.10.11",
+    "@types/node": "^24.10.12",
     "commander": "^14.0.3",
     "picocolors": "^1.1.1",
     "tsdown": "^0.20.3",
